@@ -18,3 +18,13 @@ def predict_price(data):
     prediction = model.predict(X)
 
     return float(prediction[0])
+
+from app.db.supabase import supabase
+
+def save_prediction(data, price):
+    supabase.table("predictions").insert({
+        "year": data.year,
+        "km_driven": data.km_driven,
+        "fuel": data.fuel,
+        "price": price
+    }).execute()

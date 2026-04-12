@@ -1,24 +1,26 @@
-# 🚗 Car Price Prediction API (FastAPI + Machine Learning)
+# 🚗 Car Price Predictor AI (Full Stack ML + FastAPI + Supabase)
 
-## 📌 Project Overview
+## 📌 Overview
 
-This project is a **Machine Learning + FastAPI web application** that predicts the price of a used car based on multiple features such as year, kilometers driven, fuel type, transmission, owner type, and company.
+This is a **full-stack AI-powered web application** that predicts the price of a used car based on user inputs.
+The system includes:
 
-It includes:
-
-* 🤖 Machine Learning model (Random Forest)
-* ⚡ FastAPI backend (REST API)
-* 🎨 Streamlit frontend (User Interface)
+* 🤖 Machine Learning model (price prediction)
+* ⚡ FastAPI backend (secure REST API)
+* 🎨 Streamlit frontend (modern UI)
+* 🔐 JWT Authentication (login system)
+* 🗄️ Supabase (PostgreSQL database)
 
 ---
 
 ## 🚀 Features
 
-* Predict car prices using ML model
-* REST API built with FastAPI
-* Interactive UI using Streamlit
-* Data preprocessing with OneHotEncoding
-* Clean modular project structure
+✅ Predict car prices using AI
+✅ Secure login system (JWT)
+✅ Store predictions in database
+✅ Modern dark-themed UI
+✅ Full-stack architecture
+✅ Real-time API integration
 
 ---
 
@@ -27,32 +29,52 @@ It includes:
 * Python
 * FastAPI
 * Uvicorn
-* Scikit-learn
-* Pandas
-* NumPy
 * Streamlit
+* scikit-learn
+* Supabase
+* python-jose
+* passlib
+
+---
+
+## 🏗️ Architecture
+
+```text
+Frontend (Streamlit)
+        ↓
+FastAPI Backend
+   ├── Auth (JWT)
+   ├── Prediction API
+   └── Supabase Database
+        ↓
+ML Model (scikit-learn)
+```
 
 ---
 
 ## 📂 Project Structure
 
-```
+```bash
 car_price_predict_AI/
 │
 ├── app/
 │   ├── main.py
 │   ├── api/
+│   │   ├── routes.py
+│   │   └── auth.py
+│   ├── core/
+│   │   ├── security.py
+│   │   ├── hash.py
+│   │   └── deps.py
 │   ├── services/
-│   ├── models/
+│   │   └── predictor.py
+│   ├── db/
+│   │   └── supabase.py
 │   └── schemas/
 │
 ├── ml/
 │   ├── train.py
-│   ├── preprocess.py
 │   └── model.pkl
-│
-├── data/
-│   └── car_data.csv
 │
 ├── frontend.py
 ├── run.py
@@ -62,23 +84,27 @@ car_price_predict_AI/
 
 ---
 
-## ⚙️ Installation & Setup
+## ⚙️ Setup Instructions
 
-### 1️⃣ Clone the repository
+### 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/your-username/car-price-prediction.git
-cd car-price-prediction
+git clone https://github.com/your-username/car-price-predictor-ai.git
+cd car-price-predictor-ai
 ```
 
-### 2️⃣ Create virtual environment
+---
+
+### 2️⃣ Create Virtual Environment
 
 ```bash
 python -m venv .venv
 .venv\Scripts\activate
 ```
 
-### 3️⃣ Install dependencies
+---
+
+### 3️⃣ Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -86,7 +112,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🤖 Train the Model
+## 🤖 Train ML Model
 
 ```bash
 python ml/train.py
@@ -94,13 +120,25 @@ python ml/train.py
 
 ---
 
-## ⚡ Run FastAPI Server
+## 🔐 Environment Variables
+
+Create `.env` file:
+
+```env
+SUPABASE_URL=your_supabase_url
+SUPABASE_KEY=your_supabase_key
+SECRET_KEY=your_secret_key
+```
+
+---
+
+## ⚡ Run Backend (FastAPI)
 
 ```bash
 python run.py
 ```
 
-👉 Open in browser:
+👉 Open:
 
 ```
 http://127.0.0.1:8000/docs
@@ -122,20 +160,22 @@ http://localhost:8501
 
 ---
 
-## 📊 API Usage
+## 🔐 Authentication Flow
 
-### Endpoint:
+1. Signup → create user
+2. Login → get JWT token
+3. Use token to access `/predict`
 
-```
-POST /predict
-```
+---
 
-### Sample Input:
+## 📊 API Example
+
+### Request:
 
 ```json
 {
   "year": 2020,
-  "km_driven": 25000,
+  "km_driven": 20000,
   "fuel": "Petrol",
   "transmission": "Manual",
   "owner": "First",
@@ -143,7 +183,7 @@ POST /predict
 }
 ```
 
-### Sample Output:
+### Response:
 
 ```json
 {
@@ -153,22 +193,44 @@ POST /predict
 
 ---
 
-## 📈 Model Details
+## 🗄️ Database (Supabase)
 
-* Algorithm: Random Forest Regressor
-* Preprocessing: OneHotEncoding
-* Features:
+Table: `predictions`
 
-  * Year
-  * KM Driven
-  * Fuel Type
-  * Transmission
-  * Owner
-  * Company
+| Column       | Type |
+| ------------ | ---- |
+| id           | int  |
+| year         | int  |
+| km_driven    | int  |
+| fuel         | text |
+| transmission | text |
+| owner        | text |
+| company      | text |
+| price        | int  |
 
 ---
 
+## 🔥 Future Improvements
 
+* 📊 Add prediction history dashboard
+* 📈 Add charts & analytics
+* 🌐 Deploy on cloud (Render / Railway)
+* 🔐 OAuth login (Google login)
+* 🤖 Add AI chatbot assistant
+
+---
+
+## 🎤 Resume Description
+
+**Car Price Predictor AI (Full Stack ML Project)**
+
+* Built an end-to-end ML system using scikit-learn
+* Developed secure REST APIs with FastAPI
+* Implemented JWT authentication using python-jose
+* Integrated Supabase PostgreSQL database
+* Designed modern UI using Streamlit
+
+---
 
 ## 👨‍💻 Author
 
@@ -176,12 +238,4 @@ Kushal B G
 
 ---
 
-## ⭐ Contribute
 
-Feel free to fork this repo and improve it!
-
----
-
-## 📜 License
-
-This project is open-source and free to use.
