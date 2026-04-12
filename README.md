@@ -168,19 +168,11 @@ POST /predict
 
 ---
 
-## 🔥 Future Improvements
 
-* Add real dataset (Kaggle)
-* Improve model accuracy
-* Add database (store predictions)
-* Deploy on cloud (Render / AWS)
-* Add authentication system
-
----
 
 ## 👨‍💻 Author
 
-Your Name
+Kushal B G
 
 ---
 
