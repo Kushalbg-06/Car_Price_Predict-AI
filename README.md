@@ -190,46 +190,6 @@ http://localhost:8501
   "predicted_price": 634000
 }
 ```
-
----
-
-## 🗄️ Database (Supabase)
-
-Table: `predictions`
-
-| Column       | Type |
-| ------------ | ---- |
-| id           | int  |
-| year         | int  |
-| km_driven    | int  |
-| fuel         | text |
-| transmission | text |
-| owner        | text |
-| company      | text |
-| price        | int  |
-
----
-
-## 🔥 Future Improvements
-
-* 📊 Add prediction history dashboard
-* 📈 Add charts & analytics
-* 🌐 Deploy on cloud (Render / Railway)
-* 🔐 OAuth login (Google login)
-* 🤖 Add AI chatbot assistant
-
----
-
-## 🎤 Resume Description
-
-**Car Price Predictor AI (Full Stack ML Project)**
-
-* Built an end-to-end ML system using scikit-learn
-* Developed secure REST APIs with FastAPI
-* Implemented JWT authentication using python-jose
-* Integrated Supabase PostgreSQL database
-* Designed modern UI using Streamlit
-
 ---
 
 ## 👨‍💻 Author
